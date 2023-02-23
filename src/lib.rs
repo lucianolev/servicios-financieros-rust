@@ -1,5 +1,5 @@
 struct Account {
-    transactions: Vec<Deposit>
+    transactions: Vec<Deposit>,
 }
 
 impl Account {
@@ -10,11 +10,9 @@ impl Account {
     }
 
     fn balance(self) -> i32 {
-        let mut balance = 0;
-        for transaction in self.transactions {
-            balance = balance + transaction.value();
-        }
-        return balance;
+        let transactions = self.transactions.iter();
+        return transactions.fold(0,
+                                 |sum, a_transaction: &Deposit| sum + a_transaction.value());
     }
 
     fn register(&mut self, a_transaction: Deposit) {
@@ -23,7 +21,7 @@ impl Account {
 }
 
 struct Deposit {
-    value: i32
+    value: i32,
 }
 
 impl Deposit {
@@ -35,10 +33,10 @@ impl Deposit {
     fn of(a_value: i32) -> Deposit {
         return Deposit {
             value: a_value
-        }
+        };
     }
 
-    fn value(self) -> i32 {
+    fn value(&self) -> i32 {
         return self.value;
     }
 }
