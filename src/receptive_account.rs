@@ -19,7 +19,7 @@ impl ReceptiveAccount {
         return balance;
     }
 
-    pub fn register(&mut self, a_transaction: Box<dyn AccountTransaction>) {
-        self.transactions.push(a_transaction);
+    pub fn register(&mut self, a_transaction: impl AccountTransaction + 'static) {
+        self.transactions.push(Box::new(a_transaction));
     }
 }

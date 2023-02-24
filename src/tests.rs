@@ -30,7 +30,7 @@ mod tests {
     fn test04_withdraw_value_must_be_positive() {
         let mut account = ReceptiveAccount::new();
         let withdraw_value = 50;
-        let withdraw = *Withdraw::register_on(withdraw_value, &mut account);
+        let withdraw = Withdraw::register_on(withdraw_value, &mut account);
         assert_eq!(withdraw.value(), withdraw_value);
     }
 }

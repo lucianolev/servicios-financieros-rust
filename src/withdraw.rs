@@ -7,11 +7,10 @@ pub struct Withdraw {
 }
 
 impl Withdraw {
-    pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) -> Box<Withdraw> {
+    pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) -> Withdraw {
         let withdraw = Withdraw::of(a_value);
-        let withdraw_box = Box::new(withdraw);
-        an_account.register(withdraw_box.clone());
-        return withdraw_box;
+        an_account.register(withdraw.clone());
+        return withdraw;
     }
 
     fn of(a_value: i32) -> Withdraw {

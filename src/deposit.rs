@@ -7,11 +7,10 @@ pub struct Deposit {
 }
 
 impl Deposit {
-    pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) -> Box<Deposit> {
+    pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) -> Deposit {
         let deposit = Deposit::of(a_value);
-        let deposit_box = Box::new(deposit);
-        an_account.register(deposit_box.clone());
-        return deposit_box;
+        an_account.register(deposit.clone());
+        return deposit;
     }
 
     fn of(a_value: i32) -> Deposit {
