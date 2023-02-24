@@ -30,7 +30,7 @@ impl ReceptiveAccount {
         return self.transactions.contains(&transaction_box);
     }
 
-    pub fn transactions(&self) -> &Vec<Box<dyn AccountTransaction>> {
-        return &self.transactions;
+    pub fn transactions(&self) -> Vec<Box<dyn AccountTransaction>> {
+        return self.transactions.clone();
     }
 }

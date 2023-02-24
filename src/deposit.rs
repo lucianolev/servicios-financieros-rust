@@ -28,4 +28,8 @@ impl AccountTransaction for Deposit {
     fn affect_balance(&self, balance: i32) -> i32 {
         return balance + self.value;
     }
+
+    fn clone_boxed(&self) -> Box<dyn AccountTransaction> {
+        Box::new(self.clone())
+    }
 }
