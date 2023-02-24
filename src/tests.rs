@@ -33,4 +33,13 @@ mod tests {
         let withdraw = Withdraw::register_on(withdraw_value, &mut account);
         assert_eq!(withdraw.value(), withdraw_value);
     }
+
+    #[test]
+    fn test05_receptive_account_know_its_registered_transactions() {
+        let mut account = ReceptiveAccount::new();
+        let deposit = Deposit::register_on(100, &mut account);
+        let withdraw = Withdraw::register_on(50, &mut account);
+        assert!(account.has_registered(Box::new(deposit)));
+        assert!(account.has_registered(Box::new(withdraw)));
+    }
 }

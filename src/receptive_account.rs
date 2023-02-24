@@ -22,4 +22,8 @@ impl ReceptiveAccount {
     pub fn register(&mut self, a_transaction: impl AccountTransaction + 'static) {
         self.transactions.push(Box::new(a_transaction));
     }
+
+    pub fn has_registered(&self, a_transaction: Box<dyn AccountTransaction>) -> bool {
+        return self.transactions.contains(&a_transaction);
+    }
 }
