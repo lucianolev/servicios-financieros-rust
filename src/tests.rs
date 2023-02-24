@@ -51,4 +51,13 @@ mod tests {
         assert!(!account.has_registered(Box::new(deposit)));
         assert!(!account.has_registered(Box::new(withdraw)));
     }
+
+    #[test]
+    fn test07_account_knows_its_transactions() {
+        let mut account = ReceptiveAccount::new();
+        let deposit = Deposit::register_on(100, &mut account);
+        assert_eq!(account.transactions().len(), 1);
+        let transaction_box = Box::new(deposit) as Box<dyn AccountTransaction>;
+        assert!(account.transactions().contains(&transaction_box));
+    }
 }

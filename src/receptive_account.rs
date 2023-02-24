@@ -4,6 +4,8 @@ pub struct ReceptiveAccount {
     transactions: Vec<Box<dyn AccountTransaction>>,
 }
 
+impl ReceptiveAccount {}
+
 impl ReceptiveAccount {
     pub fn new() -> ReceptiveAccount {
         return ReceptiveAccount {
@@ -25,5 +27,9 @@ impl ReceptiveAccount {
 
     pub fn has_registered(&self, a_transaction: Box<dyn AccountTransaction>) -> bool {
         return self.transactions.contains(&a_transaction);
+    }
+
+    pub fn transactions(&self) -> &Vec<Box<dyn AccountTransaction>> {
+        return &self.transactions;
     }
 }
