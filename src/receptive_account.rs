@@ -4,8 +4,6 @@ pub struct ReceptiveAccount {
     transactions: Vec<Box<dyn AccountTransaction>>,
 }
 
-impl ReceptiveAccount {}
-
 impl ReceptiveAccount {
     pub fn new() -> ReceptiveAccount {
         return ReceptiveAccount {
