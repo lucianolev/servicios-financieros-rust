@@ -7,8 +7,8 @@ pub struct Withdraw {
 
 impl Withdraw {
     pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) {
-        let withdraw = Box::new(Withdraw::of(a_value));
-        an_account.register(withdraw);
+        let withdraw = Withdraw::of(a_value);
+        an_account.register(Box::new(withdraw));
     }
 
     fn of(a_value: i32) -> Withdraw {

@@ -7,8 +7,8 @@ pub struct Deposit {
 
 impl Deposit {
     pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) {
-        let deposit = Box::new(Deposit::of(a_value));
-        an_account.register(deposit);
+        let deposit = Deposit::of(a_value);
+        an_account.register(Box::new(deposit));
     }
 
     fn of(a_value: i32) -> Deposit {
