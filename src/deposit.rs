@@ -1,14 +1,17 @@
 use crate::account_transaction::AccountTransaction;
 use crate::receptive_account::ReceptiveAccount;
 
+#[derive(Clone)]
 pub struct Deposit {
     value: i32,
 }
 
 impl Deposit {
-    pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) {
+    pub fn register_on(a_value: i32, an_account: &mut ReceptiveAccount) -> Box<Deposit> {
         let deposit = Deposit::of(a_value);
-        an_account.register(Box::new(deposit));
+        let deposit_box = Box::new(deposit);
+        an_account.register(deposit_box.clone());
+        return deposit_box;
     }
 
     fn of(a_value: i32) -> Deposit {

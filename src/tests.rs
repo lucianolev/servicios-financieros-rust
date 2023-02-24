@@ -1,5 +1,6 @@
 #[cfg(test)]
 mod tests {
+    use crate::account_transaction::AccountTransaction;
     use crate::deposit::Deposit;
     use crate::receptive_account::ReceptiveAccount;
     use crate::withdraw::Withdraw;
@@ -23,5 +24,13 @@ mod tests {
         Deposit::register_on(100, &mut account);
         Withdraw::register_on(50, &mut account);
         assert_eq!(account.balance(), 50);
+    }
+
+    #[test]
+    fn test04_withdraw_value_must_be_positive() {
+        let mut account = ReceptiveAccount::new();
+        let withdraw_value = 50;
+        let withdraw = *Withdraw::register_on(withdraw_value, &mut account);
+        assert_eq!(withdraw.value(), withdraw_value);
     }
 }
