@@ -13,7 +13,7 @@ impl Withdraw {
         return withdraw;
     }
 
-    fn of(a_value: i32) -> Withdraw {
+    pub fn of(a_value: i32) -> Withdraw {
         return Withdraw {
             value: a_value
         };

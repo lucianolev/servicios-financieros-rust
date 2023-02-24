@@ -13,7 +13,7 @@ impl Deposit {
         return deposit;
     }
 
-    fn of(a_value: i32) -> Deposit {
+    pub fn of(a_value: i32) -> Deposit {
         return Deposit {
             value: a_value
         };

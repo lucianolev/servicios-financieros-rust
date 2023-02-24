@@ -42,4 +42,13 @@ mod tests {
         assert!(account.has_registered(Box::new(deposit)));
         assert!(account.has_registered(Box::new(withdraw)));
     }
+
+    #[test]
+    fn test06_receptive_account_does_not_know_not_registered_transactions() {
+        let account = ReceptiveAccount::new();
+        let deposit = Deposit::of(100);
+        let withdraw = Withdraw::of(50);
+        assert!(!account.has_registered(Box::new(deposit)));
+        assert!(!account.has_registered(Box::new(withdraw)));
+    }
 }
