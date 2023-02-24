@@ -12,9 +12,8 @@ impl ReceptiveAccount {
     }
 
     pub fn balance(self) -> i32 {
-        let transactions = self.transactions;
         let mut balance = 0;
-        for transaction in transactions {
+        for transaction in self.transactions {
             balance = transaction.affect_balance(balance)
         };
         return balance;
