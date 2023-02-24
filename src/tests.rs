@@ -39,8 +39,8 @@ mod tests {
         let mut account = ReceptiveAccount::new();
         let deposit = Deposit::register_on(100, &mut account);
         let withdraw = Withdraw::register_on(50, &mut account);
-        assert!(account.has_registered(Box::new(deposit)));
-        assert!(account.has_registered(Box::new(withdraw)));
+        assert!(account.has_registered(deposit));
+        assert!(account.has_registered(withdraw));
     }
 
     #[test]
@@ -48,8 +48,8 @@ mod tests {
         let account = ReceptiveAccount::new();
         let deposit = Deposit::of(100);
         let withdraw = Withdraw::of(50);
-        assert!(!account.has_registered(Box::new(deposit)));
-        assert!(!account.has_registered(Box::new(withdraw)));
+        assert!(!account.has_registered(deposit));
+        assert!(!account.has_registered(withdraw));
     }
 
     #[test]
